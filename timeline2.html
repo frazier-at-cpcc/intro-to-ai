@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Milestones in AI Development</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #3498db;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        .event {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .event:nth-child(even) {
+            left: 50%;
+        }
+        .event:nth-child(odd) {
+            left: 0;
+        }
+        .event::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 4px solid #3498db;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .event:nth-child(even)::after {
+            left: -10px;
+        }
+        .event:nth-child(odd)::after {
+            right: -10px;
+        }
+        .event:hover::after {
+            background-color: #3498db;
+        }
+        .event-content {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+        .event:nth-child(even) .event-content {
+            margin-left: 20px;
+        }
+        .event:nth-child(odd) .event-content {
+            margin-right: 20px;
+        }
+        .event h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .event p {
+            margin-bottom: 0;
+        }
+        .selected {
+            background-color: #e1f0fa;
+        }
+    </style>
+</head>
+<body>
+    <h1>Key Milestones in AI Development</h1>
+    <div class="timeline" id="timeline"></div>
+
+    <script>
+        const timelineData = [
+            { year: 1951, title: "First AI Program", description: "The first AI program, Logical Theorist, is developed by Allen Newell and Herbert Simon." },
+            { year: 1956, title: "Term 'Artificial Intelligence' Coined", description: "The term 'Artificial Intelligence' is coined during the Dartmouth Summer Research Project on Artificial Intelligence." },
+            { year: 1965, title: "First Expert System", description: "The first Expert System, MYCIN, is developed by Edward Feigenbaum and his team." },
+            { year: 1980, title: "First AI Language", description: "The first AI language, Lisp, is developed by John McCarthy." },
+            { year: 1997, title: "First AI-Powered Robot", description: "The first AI-powered robot, C-1, is developed by Honda." },
+            { year: 2004, title: "First AI-Powered Virtual Assistant", description: "The first AI-powered virtual assistant, Siri, is developed by SRI International." },
+            { year: 2011, title: "First AI-Powered Self-Driving Car", description: "The first AI-powered self-driving car, Google Self-Driving Car, is developed by Google." },
+            { year: 2014, title: "First AI-Powered Personal Assistant", description: "The first AI-powered personal assistant, Cortana, is developed by Microsoft." },
+            { year: 2016, title: "First AI-Powered Chatbot", description: "The first AI-powered chatbot, IBM Watson, is developed by IBM." }
+        ];
+
+        const timeline = document.getElementById('timeline');
+
+        timelineData.forEach((event, index) => {
+            const eventElement = document.createElement('div');
+            eventElement.className = 'event';
+            eventElement.innerHTML = `
+                <div class="event-content">
+                    <h2>${event.year}: ${event.title}</h2>
+                    <p>${event.description}</p>
+                </div>
+            `;
+            timeline.appendChild(eventElement);
+
+            eventElement.addEventListener('click', () => {
+                document.querySelectorAll('.event').forEach(el => el.querySelector('.event-content').classList.remove('selected'));
+                eventElement.querySelector('.event-content').classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
